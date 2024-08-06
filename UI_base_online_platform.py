@@ -27,11 +27,6 @@ def studentsignup():
         name = request.form["name"]
         email = request.form["email"]
         password = request.form["password"]
-        
-        new_student = Student(name=name,email=email,password=password)
-        db.session.add(new_student)
-        db.session.commit()
-        
         return "this is Student form submitted"
     
     return render_template("studentsign.html")
