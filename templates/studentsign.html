@@ -29,23 +29,26 @@
     </style>
 </head>
 <body>
-    <form>
+    <form  method="post" >
         <!-- Email input -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="txt" id="form2Example1" class="form-control" />
-          <label class="form-label" for="form2Example1">Names</label>
+          <label  class="form-label" for="form2Example1">Names</label>
+          <input  name = "name" type="txt"  class="form-control" placeholder="enter you name here" />
+        
         </div>
                 <!-- Email input -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="email" id="form2Example1" class="form-control" />
-          <label class="form-label" for="form2Example1">Email address</label>
+          <label  class="form-label" for="form2Example1">Email address</label>
+          <input  name="email" type="email"  class="form-control" placeholder="enter your email here" />
+         
         </div></label>
         </div>
       
         <!-- Password input -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="password" id="form2Example2" class="form-control" />
-          <label class="form-label" for="form2Example2">Password</label>
+          <label  class="form-label" for="form2Example2">Password</label>
+          <input name="password" type="password"  class="form-control" placeholder="enter your password here" />
+          
         </div>
       
         <!-- 2 column grid layout for inline styling -->
@@ -61,7 +64,7 @@
         </div>
       
         <!-- Submit button -->
-        <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
+        <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign up</button>
       
         <!-- Register buttons -->
         <div class="text-center">
