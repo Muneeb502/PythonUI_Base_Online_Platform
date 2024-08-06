@@ -1,33 +1,7 @@
 from flask import Flask, request, render_template
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-# Configuration key
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:root@localhost:5432/projectno_3database"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-db = SQLAlchemy(app)
-
-# Define the Student model
-class Student(db.Model):
-   __tablename__ = "students"
-   id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-   name = db.Column(db.String(200), nullable=False)
-   email = db.Column(db.String(200), unique=True, nullable=False)
-   password = db.Column(db.String(200), nullable=False)
-
-# Define the Teacher model
-class Teacher(db.Model):
-   __tablename__ = "teachers"
-   id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-   name = db.Column(db.String(200), nullable=False)
-   email = db.Column(db.String(200), unique=True, nullable=False)
-   password = db.Column(db.String(200), nullable=False)
-
-# Create the database tables
-with app.app_context():
-    db.create_all()
 
 
 @app.route("/")
