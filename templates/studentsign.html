@@ -29,10 +29,10 @@
     </style>
 </head>
 <body>
-    <form  method="post" >
+    <form action="/studentlogin" method="post" >
         <!-- Email input -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label  class="form-label" for="form2Example1">Names</label>
+          <label  class="form-label" >Names</label>
           <input  name = "name" type="txt"  class="form-control" placeholder="enter you name here" />
         
         </div>
@@ -54,11 +54,10 @@
       
         <!-- Submit button -->
         <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign up</button>
-      
-        <!-- Register buttons -->
-        <div class="text-center">
-          <p>already a member? <a href="/studentlogin">login</a></p>
-         
-        </div>
-      </form></body>
+      </form>
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>already a member? <a href="/studentlogin">login</a></p>
+     
+    </div></body>
 </html>

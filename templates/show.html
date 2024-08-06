@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 50px auto;
+        }
+        th, td {
+            border: 1px solid #e40c0c;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #100c0c;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #0feb4e;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: black;
+            border: 2px solid #e40c0c ;
+            display: block;
+            text-align: center;
+            margin: 20px;
+            width: max-content;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>Email</th>
+                <th>password</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row["name"] }}</td>
+                <td>{{ row["email"] }}</td>
+                <td>{{ row["password"] }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Go to home page</a>
+</body>
+</html>
