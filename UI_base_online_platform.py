@@ -9,8 +9,8 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/teacherlogin" , methods =["POST","GET"])
-def teacherlogin():
+@app.route("/teachersignup" , methods =["POST","GET"]) 
+def teachersignup():
     if request.method == "POST":
         name = request.form["name"]
         email = request.form["email"]
@@ -24,8 +24,35 @@ def teacherlogin():
     return render_template("teachersign.html")
 
 
-@app.route("/studentlogin" , methods =["POST","GET"])
-def studentlogin():
+
+@app.route("/teacherlogin" , methods =["POST","GET"])
+def teacherlogin():
+    if request.method == "POST":
+        email = request.form["email"]
+        sub_id = request.form["sub_id"]
+        password = request.form["password"]
+        
+        # Connect to the database
+        with sql.connect("mydata.db") as con:
+            cur = con.cursor()
+            cur.execute("SELECT * FROM teachers WHERE email = ? AND subject_id = ? AND password = ?", (email,sub_id, password))
+            teacher = cur.fetchone()
+        
+        # Check if a matching student is found
+        if teacher:
+            # Redirect to a dashboard or home page after successful login
+            return render_template("tech_dashboard.html")
+        else:
+            # Render the login page again with an error message
+            error = "Invalid email or password. Please try again."
+            return render_template("teacherlogin.html", error=error)
+    
+    return render_template("teacherlogin.html")
+    
+    
+    
+@app.route("/studentsignup"  , methods =["POST","GET"])
+def studentsignup():    
     if request.method == "POST":
         name = request.form["name"]
         email = request.form["email"]
@@ -37,21 +64,8 @@ def studentlogin():
         return render_template("studentlogin.html")
     return render_template("studentsign.html")
 
-@app.route("/teachersignup")
-def teachersignup():
-    
-    return render_template("teachersign.html")
-
-@app.route("/studentsignup" )
-def studentsignup():    
-    return render_template("studentsign.html")
-
-@app.route("/techer/dashboard")
-def tecacher_dashboard():
-    return render_template("tech_dashboard.html")
-
-app.route("/student/dashboard" , methods =["POST","GET"])
-def student_dashboard():
+@app.route("/studentlogin" , methods =["POST","GET"])
+def studentlogin():
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
@@ -59,7 +73,7 @@ def student_dashboard():
         # Connect to the database
         with sql.connect("mydata.db") as con:
             cur = con.cursor()
-            cur.execute("SELECT * FROM students WHERE email = ? AND password = ?", (email, password))
+            cur.execute("SELECT * FROM students WHERE email = ?  AND password = ?", (email, password))
             student = cur.fetchone()
         
         # Check if a matching student is found
@@ -72,6 +86,19 @@ def student_dashboard():
             return render_template("studentlogin.html", error=error)
     
     return render_template("studentlogin.html")
+
+
+
+
+
+@app.route("/techer/dashboard")
+def tecacher_dashboard():
+    return render_template("tech_dashboard.html")
+
+app.route("/student/dashboard")
+def student_dashboard():
+     
+    return render_template("student_dashboard.html")
 
 
 #crestinf shw data route that show the data in student table
