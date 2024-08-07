@@ -29,7 +29,7 @@ def teachersignup():
 def teacherlogin():
     if request.method == "POST":
         email = request.form["email"]
-        sub_id = request.form["sub_id"]
+        sub_id = request.form["subject_id"]
         password = request.form["password"]
         
         # Connect to the database
